@@ -29,6 +29,7 @@ class RoomList extends Component {
     this.roomsRef.push({
       name: this.state.name
     });
+    this.setState({newRoom: ""});
   }
 
   render() {
@@ -52,7 +53,7 @@ class RoomList extends Component {
               className="room-name"
               name="create-room"
               placeholder="Enter New Room Name."
-              value={this.state.rooms.name}
+              value={this.state.newRoom}
               onChange={this.handleChange}
             / >
           </label>
