@@ -24,10 +24,10 @@ class RoomList extends Component {
     this.setState({name: e.target.value})
   }
 
-  createRoom=(e) => {
+  createRoom(e) {
     e.preventDefault();
     this.roomsRef.push({
-      name: this.state.name
+      name: this.state.name()
     });
     this.setState({newRoom: ""});
   }
@@ -55,10 +55,10 @@ class RoomList extends Component {
           <input
             type="text"
             className="room-name"
-            name="create-room"
+            ref="createRoom"
             placeholder="Enter New Room Name."
-            value={this.state.newRoom}
             onChange={this.handleChange}
+            value={this.state.NewRoom}
           / >
           <br />
           <input
