@@ -31,17 +31,23 @@ class App extends Component {
   render() {
     return (
       <section className="App">
+        <div className="container-fluid">
+          <div className="row">
+            <h1 className="col-12">
+              Bloc Chat
+            </h1>
+          </div>
+        </div>
         <div className="body container-fluid">
           <div className="row">
-            <div className="col-4">
-              <h1>Bloc Chat</h1>
+            <div className="col-4 left-panel">
               <RoomList
                 firebase={firebase}
                 activeRoom={this.state.activeRoom}
                 setActiveRoom={this.setActiveRoom}
               />
             </div>
-            <div className="col-8">
+            <div className="col-8 right-panel">
               <h3>{this.state.activeRoom}</h3>
               <MessageList
                 firebase={firebase}

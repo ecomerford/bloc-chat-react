@@ -1,5 +1,7 @@
 .App {
   text-align: left;
+  padding: 25px;
+  font-family: 'Tajawal', sans-serif;
 }
 
 .App-logo {
@@ -22,12 +24,12 @@
   font-size: large;
 }
 
-#user {
-  font-weight: bold;
-}
-
 #timestamp {
   font-size: 10px;
+}
+
+h1 {
+  font-family: 'Cedarville Cursive', cursive;
 }
 
 @keyframes App-logo-spin {

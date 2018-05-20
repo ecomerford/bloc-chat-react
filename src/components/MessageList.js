@@ -41,8 +41,7 @@ class MessageList extends Component {
       <section id="messages">
         <section id="messageList">{currentMessages.map((data, index) =>
           <div key={index}>
-            <p id="user">{data.username}:</p>
-            <p id="content">"{data.content}"</p>
+            <p id="user"><strong>{data.username}:</strong> "{data.content}"</p>
             <p id="timestamp">at {data.sentAt}</p>
           </div>)}
         </section>
