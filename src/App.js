@@ -31,16 +31,25 @@ class App extends Component {
   render() {
     return (
       <section className="App">
-        <RoomList
-          firebase={firebase}
-          activeRoom={this.state.activeRoom}
-          setActiveRoom={this.setActiveRoom}
-        />
-        <h1>{this.state.activeRoom}</h1>
-        <MessageList
-          firebase={firebase}
-          activeRoom={this.state.activeRoom}
-        />
+        <div className="body container-fluid">
+          <div className="row">
+            <div className="col-4">
+              <h1>Bloc Chat</h1>
+              <RoomList
+                firebase={firebase}
+                activeRoom={this.state.activeRoom}
+                setActiveRoom={this.setActiveRoom}
+              />
+            </div>
+            <div className="col-8">
+              <h3>{this.state.activeRoom}</h3>
+              <MessageList
+                firebase={firebase}
+                activeRoom={this.state.activeRoom}
+              />
+            </div>
+          </div>
+        </div>
       </section>
     )
   }

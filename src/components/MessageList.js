@@ -23,13 +23,16 @@ class MessageList extends Component {
     var currentUsername = "Guest User";
     var messageContent = this.refs.messageContent.value;
     var activeRoomId = this.props.activeRoom;
+    var rawTime = new Date();
+    var formattedTime = rawTime.toUTCString();
     this.messageRef.push({
       username: currentUsername,
       content: messageContent,
-      sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+      sentAt: formattedTime,
       roomId: activeRoomId
     });
     document.getElementById("message-field").value = "";
+    console.log(rawTime);
   }
 
   render() {
@@ -38,9 +41,9 @@ class MessageList extends Component {
       <section id="messages">
         <section id="messageList">{currentMessages.map((data, index) =>
           <div key={index}>
-            <p>{data.username}:</p>
-            <p>"{data.content}"</p>
-            <p>at {data.sentAt}</p>
+            <p id="user">{data.username}:</p>
+            <p id="content">"{data.content}"</p>
+            <p id="timestamp">at {data.sentAt}</p>
           </div>)}
         </section>
         <section>
