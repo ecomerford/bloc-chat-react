@@ -22,28 +22,29 @@ class MessageList extends Component {
     e.preventDefault();
     var currentUsername = "Guest User";
     var messageContent = this.refs.messageContent.value;
-    var time = "Unknown";
-    var activeRoomId = this.props.activeRoom.name;
+    var activeRoomId = this.props.activeRoom;
     this.messageRef.push({
       username: currentUsername,
       content: messageContent,
-      sentAt: time,
+      sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
       roomId: activeRoomId
     });
-    this.setState({newMessage: ""})
+    document.getElementById("message-field").value = "";
   }
 
   render() {
+    var currentMessages = this.state.messages.filter( message => message.roomId === this.props.activeRoom);
     return (
       <section id="messages">
-        <section id="messageList">{this.state.messages.map((data, index) =>
-          <div>
-            <div key={index}>{data.username}</div>
-            <div key={index}>{data.content}</div>
-            <div key={index}>(data.sentAt)</div>
+        <section id="messageList">{currentMessages.map((data, index) =>
+          <div key={index}>
+            <p>{data.username}:</p>
+            <p>"{data.content}"</p>
+            <p>at {data.sentAt}</p>
           </div>)}
         </section>
-        <section id="newMessage">
+        <section>
+        {this.props.activeRoom !== "" &&
           <form
             id="messageForm"
             onSubmit={this.createMessage}
@@ -53,13 +54,14 @@ class MessageList extends Component {
               type="text"
               placeholder="Enter your message here."
               ref="messageContent"
+              id="message-field"
             />
             <br />
             <input
               type="submit"
               value="Submit"
             />
-          </form>
+          </form>}
         </section>
       </section>
     )
