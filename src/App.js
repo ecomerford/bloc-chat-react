@@ -26,8 +26,6 @@ class App extends Component {
 
   setActiveRoom(e) {
     this.setState({activeRoom: e.target.id});
-    console.log(e.target);
-    console.log(this.state.activeRoom);
   }
 
   render() {
