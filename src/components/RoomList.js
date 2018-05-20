@@ -11,7 +11,6 @@ class RoomList extends Component {
     this.createRoom = this.createRoom.bind(this);
   }
 
-
   componentDidMount(){
     this.roomsRef.on("child_added", snapshot => {
         const room = snapshot.val();
@@ -27,20 +26,23 @@ class RoomList extends Component {
   createRoom(e) {
     e.preventDefault();
     this.roomsRef.push({
-      name: this.state.name()
+      name: this.state.name
     });
-    this.setState({newRoom: ""});
+    document.getElementById('room-field').value = "";
   }
 
   render() {
     return (
       <section className="rooms">
-        <div className="list">
+        <div
+          className="list"
+        >
           {
             this.state.rooms.map((data, index) =>
               <p
-                onClick={this.props.setActiveRoom(data.key)}
                 key={index}
+                id={data.name}
+                onClick={this.props.setActiveRoom}
               >
                 {data.name}
               </p>
@@ -52,14 +54,12 @@ class RoomList extends Component {
           onSubmit={this.createRoom}
         >
           <p>Create a New Room:</p>
-          <input
-            type="text"
-            className="room-name"
-            ref="createRoom"
-            placeholder="Enter New Room Name."
-            onChange={this.handleChange}
-            value={this.state.NewRoom}
-          / >
+            <input
+              type="text"
+              placeholder="Enter New Room Name."
+              id="room-field"
+              onChange={this.handleChange}
+            / >
           <br />
           <input
             type="submit"

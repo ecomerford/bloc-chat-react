@@ -24,9 +24,9 @@ class App extends Component {
     this.setActiveRoom = this.setActiveRoom.bind(this);
   }
 
-  setActiveRoom(selectedRoom) {
-    var newActiveRoom = selectedRoom;
-    this.setState({activeRoom: newActiveRoom});
+  setActiveRoom(e) {
+    this.setState({activeRoom: e.target.id});
+    console.log(e.target);
     console.log(this.state.activeRoom);
   }
 
@@ -38,6 +38,7 @@ class App extends Component {
           activeRoom={this.state.activeRoom}
           setActiveRoom={this.setActiveRoom}
         />
+        <h1>{this.state.activeRoom}</h1>
         <MessageList
           firebase={firebase}
           activeRoom={this.state.activeRoom}
