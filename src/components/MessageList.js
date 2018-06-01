@@ -20,7 +20,7 @@ class MessageList extends Component {
 
   createMessage(e) {
     e.preventDefault();
-    var currentUsername = "Guest User";
+    var currentUsername = this.props.userName;
     var messageContent = this.refs.messageContent.value;
     var activeRoomId = this.props.activeRoom;
     var rawTime = new Date();
@@ -32,7 +32,6 @@ class MessageList extends Component {
       roomId: activeRoomId
     });
     document.getElementById("message-field").value = "";
-    console.log(rawTime);
   }
 
   render() {
