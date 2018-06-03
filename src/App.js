@@ -35,9 +35,9 @@ class App extends Component {
     if (user) {
     let authorizedUser = user.displayName;
     this.setState({userName: authorizedUser});
-  } else {
+    } else {
     this.setState({userName: "Guest"});
-  }
+    }
   }
 
   render() {
